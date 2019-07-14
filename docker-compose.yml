@@ -2,8 +2,6 @@
 #
 # Create a .env file in the same folder as this file and change the variables.
 # MOUNT_POINT=/tmp/
-# VPN_PROVIDER=changeme
-# VPN_CONFIG=changeme
 # VPN_USERNAME=changeme
 # VPN_PASSWORD=changeme
 #
