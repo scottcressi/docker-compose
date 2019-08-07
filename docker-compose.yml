@@ -1,10 +1,8 @@
 # to run: docker-compose run
 #
 # Create a .env file in the same folder as this file and change the variables.
-# MOUNT_POINT=/tmp/
 # VPN_USERNAME=changeme
 # VPN_PASSWORD=changeme
-#
 #
 version: "2"
 
@@ -25,7 +23,7 @@ services:
       - 8.8.4.4
     volumes:
       - /etc/localtime:/etc/localtime:ro
-      - /var/tmp/transmission/data/:/data
+      - ./transmission/data/:/data
     environment:
       - OPENVPN_PROVIDER=PIA
       - OPENVPN_USERNAME=${VPN_USERNAME}
@@ -58,9 +56,9 @@ services:
       - TZ=Europe/London
       - UMASK_SET=022 #optional
     volumes:
-      - /var/tmp/sonarr/config:/config
-      - /var/tmp/sonarr/tvseries:/tv
-      - /var/tmp/sonarr/downloads:/downloads
+      - ./sonarr/config:/config
+      - ./sonarr/tvseries:/tv
+      - ./sonarr/downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -74,9 +72,9 @@ services:
       - TZ=Europe/London
       - UMASK_SET=022 #optional
     volumes:
-      - /var/tmp/radarr/config:/config
-      - /var/tmp/radarr/movies:/movies
-      - /var/tmp/radarr/downloads:/downloads
+      - ./radarr/config:/config
+      - ./radarr/movies:/movies
+      - ./radarr/downloads:/downloads
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -90,8 +88,8 @@ services:
       - TZ=Europe/London
       - RUN_OPTS=<run options here> #optional
     volumes:
-      - /var/tmp/jackett/config:/config
-      - /var/tmp/jackett/downloads:/downloads
+      - ./jackett/config:/config
+      - ./jackett/downloads:/downloads
     ports:
       - 9117:9117
     restart: unless-stopped
@@ -105,7 +103,7 @@ services:
       - PLEX_CLAIM=<claimToken>
     network_mode: host
     volumes:
-      - /var/tmp/plex/config:/config
-      - /var/tmp/plex/transcode:/transcode
-      - /var/tmp/plex/data:/data
+      - ./plex/config:/config
+      - ./plex/transcode:/transcode
+      - ./plex/data:/data
       - /mnt/videos:/videos
