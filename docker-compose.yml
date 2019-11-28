@@ -25,7 +25,7 @@ services:
       - /etc/localtime:/etc/localtime:ro
       - ./transmission/data/:/data
     environment:
-      - OPENVPN_PROVIDER=PIA
+      - OPENVPN_PROVIDER=MULLVAD
       - OPENVPN_USERNAME=${VPN_USERNAME}
       - OPENVPN_PASSWORD=${VPN_PASSWORD}
       - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
