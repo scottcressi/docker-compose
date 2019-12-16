@@ -66,3 +66,19 @@ services:
     ports: [8081:8081]
     restart: unless-stopped
     volumes: [./tautulli/config:/config,./tautulli/plex_logs:/plex_logs:ro]
+
+  lidarr:
+    container_name: lidarr
+    image: linuxserver/lidarr:latest
+    network_mode: host
+    ports: [8686:8686]
+    restart: unless-stopped
+    volumes: [./lidarr/appdata/config:/config,./lidarr/music:/music,./lidarr/downloads:/downloads]
+
+  organizr:
+    container_name: organizr
+    image: linuxserver/organizr:latest
+    network_mode: host
+    ports: [9983:9983]
+    restart: unless-stopped
+    volumes: [./organizr/config:/config]
