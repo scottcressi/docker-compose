@@ -56,9 +56,8 @@ services:
 
   tautulli:
     container_name: tautulli
-    image: tautulli/tautulli:latest
-    network_mode: host
-    ports: [8081:8081]
+    image: linuxserver/tautulli:latest
+    ports: [8181:8181]
     volumes: [./tautulli/config:/config,./tautulli/plex_logs:/plex_logs:ro]
 
   lidarr:
