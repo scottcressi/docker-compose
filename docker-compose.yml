@@ -20,12 +20,14 @@ services:
     volumes: [/etc/localtime:/etc/localtime:ro,./transmission/data/:/data]
 
   proxy:
+    container_name: proxy
     image: haugene/transmission-openvpn-proxy:latest
     links: [transmission]
     ports: [8080:8080]
     volumes: [/etc/localtime:/etc/localtime:ro]
 
   rss:
+    container_name: rss
     environment: [RSS_URL=http://.../xxxxx.rss]
     image: haugene/transmission-rss:latest
     links: [transmission]
