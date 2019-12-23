@@ -71,3 +71,16 @@ services:
     image: linuxserver/organizr:latest
     network_mode: host
     volumes: [./organizr/config:/config]
+
+  mylar:
+    container_name: mylar
+    image: linuxserver/mylar:latest
+    ports: [8090:8090]
+    network_mode: host
+    volumes: [./mylar/config:/config,./mylar/comics:/comics/,./mylar/downloads:/downloads]
+
+  headphones:
+    container_name: headphones
+    image: linuxserver/headphones:latest
+    ports: [8182:8181]
+    volumes: [./headphones/config:/config,./headphones/music:/music/,./headphones/downloads:/downloads]
