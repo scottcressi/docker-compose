@@ -53,13 +53,13 @@ services:
   plex:
     container_name: plex
     image: plexinc/pms-docker:latest
-    ports: [20006:32400]
+    ports: [32400:32400]
     volumes: [./plex/config:/config,./plex/transcode:/transcode,./plex/data:/data,~/mnt/videos:/videos]
 
   tautulli:
     container_name: tautulli
     image: linuxserver/tautulli:latest
-    ports: [20007:8181]
+    ports: [8181:8181]
     volumes: [./tautulli/config:/config,./tautulli/plex_logs:/plex_logs:ro]
 
   lidarr:
@@ -85,3 +85,32 @@ services:
     image: linuxserver/headphones:latest
     ports: [20011:8181]
     volumes: [./headphones/config:/config,./headphones/music:/music/,./headphones/downloads:/downloads]
+
+  influxdb:
+    image: influxdb:latest
+    container_name: influxdb
+    ports: [8083,10000:8086,8090]
+    env_file: [env.influxdb]
+    volumes: [./influxdb/data:/var/lib/influxdb]
+
+  telegraf:
+    image: telegraf:latest
+    container_name: telegraf
+    links: [influxdb]
+    volumes: [./telegraf.conf:/etc/telegraf/telegraf.conf:ro,/var/run/docker.sock:/var/run/docker.sock]
+
+  grafana:
+    image: grafana/grafana:latest
+    container_name: grafana
+    ports: [10001:3000]
+    env_file: [env.grafana]
+    user: "0"
+    links: [influxdb]
+    volumes: [./grafana/data:/var/lib/grafana]
+
+  chronograf:
+    image: chronograf:latest
+    container_name: chronograf
+    ports: [10002:8888]
+    volumes: [./chronograf:/var/lib/chronograf]
+    links: [influxdb]
