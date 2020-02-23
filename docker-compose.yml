@@ -15,7 +15,7 @@ services:
     dns: [8.8.8.8, 8.8.4.4]
     environment: ["OPENVPN_PROVIDER=${VPN_PROVIDER}", "OPENVPN_USERNAME=${VPN_USERNAME}", "OPENVPN_PASSWORD=${VPN_PASSWORD}", "OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60", "LOCAL_NETWORK=192.168.0.0/24"]
     image: haugene/transmission-openvpn:latest
-    ports: [9091:9091,8888:8888]
+    ports: [9091:9091,8888]
     sysctls: [net.ipv6.conf.all.disable_ipv6=0]
     volumes: [/etc/localtime:/etc/localtime:ro,./transmission/data/:/data]
 
@@ -35,19 +35,19 @@ services:
   sonarr:
     container_name: sonarr
     image: linuxserver/sonarr:latest
-    ports: [20003:8989]
+    ports: [8989:8989]
     volumes: [./sonarr/config:/config,./sonarr/tvseries:/tv,./sonarr/downloads:/downloads]
 
   radarr:
     container_name: radarr
     image: linuxserver/radarr:latest
-    ports: [20004:7878]
+    ports: [7878:7878]
     volumes: [./radarr/config:/config,./radarr/movies:/movies,./radarr/downloads:/downloads]
 
   jackett:
     container_name: jackett
     image: linuxserver/jackett:latest
-    ports: [20005:9117]
+    ports: [9117:9117]
     volumes: [./jackett/config:/config,./jackett/downloads:/downloads]
 
   plex:
@@ -65,7 +65,7 @@ services:
   lidarr:
     container_name: lidarr
     image: linuxserver/lidarr:latest
-    ports: [20008:8686]
+    ports: [8686:8686]
     volumes: [./lidarr/appdata/config:/config,./lidarr/music:/music,./lidarr/downloads:/downloads]
 
   organizr:
@@ -77,19 +77,19 @@ services:
   mylar:
     container_name: mylar
     image: linuxserver/mylar:latest
-    ports: [20010:8090]
+    ports: [8090:8090]
     volumes: [./mylar/config:/config,./mylar/comics:/comics/,./mylar/downloads:/downloads]
 
   headphones:
     container_name: headphones
     image: linuxserver/headphones:latest
-    ports: [20011:8181]
+    ports: [8182:8181]
     volumes: [./headphones/config:/config,./headphones/music:/music/,./headphones/downloads:/downloads]
 
   influxdb:
     image: influxdb:latest
     container_name: influxdb
-    ports: [8083,10000:8086,8090]
+    ports: [8086:8086,8083,8090]
     env_file: [env.influxdb]
     volumes: [./influxdb/data:/var/lib/influxdb]
 
@@ -102,7 +102,7 @@ services:
   grafana:
     image: grafana/grafana:latest
     container_name: grafana
-    ports: [10001:3000]
+    ports: [3000:3000]
     env_file: [env.grafana]
     user: "0"
     links: [influxdb]
@@ -111,6 +111,6 @@ services:
   chronograf:
     image: chronograf:latest
     container_name: chronograf
-    ports: [10002:8888]
+    ports: [8888:8888]
     volumes: [./chronograf:/var/lib/chronograf]
     links: [influxdb]
