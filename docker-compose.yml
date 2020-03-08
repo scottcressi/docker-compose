@@ -101,7 +101,7 @@ services:
     image: influxdb:latest
     container_name: influxdb
     ports: [8086:8086,8083,8090]
-    env_file: [env.influxdb]
+    environment: ["INFLUXDB_DATA_ENGINE=tsm1","INFLUXDB_REPORTING_DISABLED=false"]
     volumes: [./influxdb/data:/var/lib/influxdb]
 
   telegraf:
@@ -114,7 +114,7 @@ services:
     image: grafana/grafana:latest
     container_name: grafana
     ports: [3000:3000]
-    env_file: [env.grafana]
+    environment: ["GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel"]
     user: "0"
     links: [influxdb]
     volumes: [./grafana/data:/var/lib/grafana]
