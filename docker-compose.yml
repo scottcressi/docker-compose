@@ -8,6 +8,9 @@
 version: "3.7"
 
 services:
+
+ # media server #
+
   transmission:
     cap_add: [NET_ADMIN]
     container_name: transmission-openvpn
@@ -85,6 +88,14 @@ services:
     image: linuxserver/headphones:latest
     ports: [8182:8181]
     volumes: [./headphones/config:/config,./headphones/music:/music/,./headphones/downloads:/downloads]
+
+  jellyfin:
+    image: linuxserver/jellyfin
+    container_name: jellyfin
+    volumes: [./jellyfin/library:/config,./jellyfin/tvseries:/data/tvshows,./jellyfin/movies:/data/movies]
+    ports: [8096:8096]
+
+ # monitoring #
 
   influxdb:
     image: influxdb:latest
