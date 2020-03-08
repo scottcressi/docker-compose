@@ -123,6 +123,7 @@ services:
     image: chronograf:latest
     container_name: chronograf
     ports: [8888:8888]
+    environment: ["INFLUXDB_URL=http://influxdb:8086","KAPACITOR_URL=http://kapacitor:9092"]
     volumes: [./chronograf:/var/lib/chronograf]
     links: [influxdb]
 
@@ -130,6 +131,6 @@ services:
     image: kapacitor:latest
     container_name: kapacitor
     ports: [9092:9092]
-    environment: [KAPACITOR_HOSTNAME=kapacitor,KAPACITOR_LOGGING_LEVEL=INFO,KAPACITOR_REPORTING_ENABLED=false,KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086]
+    environment: ["KAPACITOR_HOSTNAME=kapacitor","KAPACITOR_LOGGING_LEVEL=INFO","KAPACITOR_REPORTING_ENABLED=false","KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086"]
     volumes: [./kapacitor:/var/lib/kapacitor]
     links: [influxdb]
