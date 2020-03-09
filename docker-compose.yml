@@ -117,7 +117,7 @@ services:
     environment: ["GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel"]
     user: "0"
     links: [influxdb]
-    volumes: [./grafana/data:/var/lib/grafana]
+    volumes: [./grafana/data:/var/lib/grafana,./provisioning:/etc/grafana/provisioning]
 
   chronograf:
     image: chronograf:latest
