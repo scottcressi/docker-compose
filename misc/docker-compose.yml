@@ -5,4 +5,4 @@ services:
   whiteboard:
     image: rofl256/whiteboard
     container_name: whiteboard
-    ports: [8080:8080]
+    ports: [11111:8080]
