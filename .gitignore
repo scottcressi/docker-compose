@@ -1,16 +1,2 @@
 .env
-chronograf
-grafana
-headphones
-influxdb
-jackett
-jellyfin
-kapacitor
-lidarr
-mylar
-organizr
-plex
-radarr
-sonarr
-tautulli
-transmission
+data
