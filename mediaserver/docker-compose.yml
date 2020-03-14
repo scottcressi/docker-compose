@@ -19,19 +19,19 @@ services:
     ports: [9091:9091,8888]
     sysctls: [net.ipv6.conf.all.disable_ipv6=0]
     volumes: [/etc/localtime:/etc/localtime:ro,../data/transmission/data/:/data]
+    depends_on: [proxy]
 
   proxy:
     container_name: proxy
     image: haugene/transmission-openvpn-proxy:latest
-    links: [transmission]
     ports: [8080:8080]
     volumes: [/etc/localtime:/etc/localtime:ro]
+    depends_on: [transmission]
 
   rss:
     container_name: rss
     environment: [RSS_URL=http://..../data/xxxxx.rss]
     image: haugene/transmission-rss:latest
-    links: [transmission]
 
   sonarr:
     container_name: sonarr
@@ -50,6 +50,7 @@ services:
     image: linuxserver/jackett:latest
     ports: [9117:9117]
     volumes: [../data/jackett/config:/config,../data/jackett/downloads:/downloads]
+    depends_on: [transmission]
 
   plex:
     container_name: plex
