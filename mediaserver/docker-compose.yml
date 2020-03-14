@@ -90,5 +90,5 @@ services:
   jellyfin:
     image: linuxserver/jellyfin
     container_name: jellyfin
-    volumes: [../data/jellyfin/library:/config,../data/jellyfin/tvseries:/data/tvshows,../data/jellyfin/movies:/data/movies]
+    volumes: [../data/jellyfin/library:/config,~/mnt/videos/tv:/data/tvshows,~/mnt/videos/movies:/data/movies]
     ports: [8096:8096]
