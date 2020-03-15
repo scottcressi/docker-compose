@@ -2,22 +2,24 @@ version: '3.7'
 
 services:
 
-  elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.6.1
-    ports: ["9200:9200","9300:9300"]
-    environment: [discovery.type=single-node]
-    volumes: [esdata1:/usr/share/elasticsearch/data]
-
   logstash:
+    container_name: logstash
     image: docker.elastic.co/logstash/logstash:7.6.1
-    ports: ["5000:5000","9600:9600"]
-    depends_on: [elasticsearch]
+    ports: ["5000","9600"]
+
+  elasticsearch:
+    image: amazon/opendistro-for-elasticsearch:1.4.0
+    container_name: elasticsearch
+    environment: [cluster.name=elasticsearch,node.name=elasticsearch,discovery.seed_hosts=elasticsearch,discovery.type=single-node]
+    volumes: [elasticsearch:/usr/share/elasticsearch/data]
+    ports: [9200:9200,9600:9600]
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.6.1
-    ports: ["5601:5601"]
-    depends_on: [elasticsearch]
+    image: amazon/opendistro-for-elasticsearch-kibana:1.4.0
+    container_name: kibana
+    ports: [5601:5601]
+    expose: ["5601"]
+    environment: [ELASTICSEARCH_URL=https://elasticsearch:9200,ELASTICSEARCH_HOSTS=https://elasticsearch:9200]
 
 volumes:
-  esdata1:
-    driver: local
+  elasticsearch:
