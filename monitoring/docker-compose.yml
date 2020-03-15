@@ -12,7 +12,7 @@ services:
   telegraf:
     image: telegraf:latest
     container_name: telegraf
-    links: [influxdb]
+    depends_on: [influxdb]
     volumes: [./telegraf.conf:/etc/telegraf/telegraf.conf:ro,/var/run/docker.sock:/var/run/docker.sock]
 
   grafana:
@@ -21,7 +21,7 @@ services:
     ports: [3000:3000]
     environment: ["GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel"]
     user: "0"
-    links: [influxdb]
+    depends_on: [influxdb]
     volumes: [../data/grafana/data:/var/lib/grafana,./datasources:/etc/grafana/provisioning/datasources/,./dashboards:/etc/grafana/provisioning/dashboards/]
 
   chronograf:
@@ -30,7 +30,7 @@ services:
     ports: [8888:8888]
     environment: ["INFLUXDB_URL=http://influxdb:8086","KAPACITOR_URL=http://kapacitor:9092"]
     volumes: [../data/chronograf:/var/lib/chronograf]
-    links: [influxdb]
+    depends_on: [influxdb]
 
   kapacitor:
     image: kapacitor:latest
@@ -38,7 +38,7 @@ services:
     ports: [9092:9092]
     environment: ["KAPACITOR_HOSTNAME=kapacitor","KAPACITOR_LOGGING_LEVEL=INFO","KAPACITOR_REPORTING_ENABLED=false","KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086"]
     volumes: [../data/kapacitor:/var/lib/kapacitor]
-    links: [influxdb]
+    depends_on: [influxdb]
 
   netdata:
     image: netdata/netdata
