@@ -2,6 +2,19 @@ version: '3.7'
 
 services:
 
+  cerebro:
+    container_name: cerebro
+    image: lmenezes/cerebro
+    ports: ["9000:9000"]
+    volumes: [./application.conf:/opt/cerebro/conf/application.conf:ro]
+    depends_on: [elasticsearch]
+
+  curator:
+    container_name: curator
+    image: bobrik/curator
+    depends_on: [elasticsearch]
+    volumes: [elasticsearch:/usr/share/elasticsearch/data]
+
   logstash:
     container_name: logstash
     image: docker.elastic.co/logstash/logstash:7.6.1
