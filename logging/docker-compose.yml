@@ -11,14 +11,16 @@ services:
 
   curator:
     container_name: curator
-    image: bobrik/curator
+    image: untergeek/curator:5.7.6
     depends_on: [elasticsearch]
-    volumes: [elasticsearch:/usr/share/elasticsearch/data]
+    volumes:  ["./action_file.yml", "/usr/share/curator/config/action_file.yml"]
+    #environment:
+    #    ELASTICSEARCH_HOST: http://elasticsearch:9200
 
   logstash:
     container_name: logstash
-    image: docker.elastic.co/logstash/logstash:7.6.1
-    ports: ["5000","9600"]
+    image: docker.elastic.co/logstash/logstash-oss:7.1.1
+    ports: ["5044:5044"]
     depends_on: [elasticsearch]
 
   elasticsearch:
