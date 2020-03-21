@@ -2,6 +2,11 @@ version: '3.7'
 
 services:
 
+  filebeat:
+    container_name: filebeat
+    image: docker.elastic.co/beats/filebeat-oss:7.4.0
+    depends_on: [logstash]
+
   cerebro:
     container_name: cerebro
     image: lmenezes/cerebro
@@ -13,7 +18,7 @@ services:
     container_name: curator
     image: untergeek/curator:5.7.6
     depends_on: [elasticsearch]
-    volumes:  ["./action_file.yml", "/usr/share/curator/config/action_file.yml"]
+    #volumes:  ["./action_file.yml", "/usr/share/curator/config/action_file.yml"]
     #environment:
     #    ELASTICSEARCH_HOST: http://elasticsearch:9200
 
@@ -22,19 +27,19 @@ services:
     image: docker.elastic.co/logstash/logstash-oss:7.1.1
     ports: ["5044:5044"]
     depends_on: [elasticsearch]
+    volumes:  [./logstash.conf:/usr/share/logstash/config/logstash.conf:ro]
 
   elasticsearch:
     image: amazon/opendistro-for-elasticsearch:1.4.0
     container_name: elasticsearch
     environment: [cluster.name=elasticsearch,node.name=elasticsearch,discovery.seed_hosts=elasticsearch,discovery.type=single-node]
     volumes: [elasticsearch:/usr/share/elasticsearch/data]
-    ports: [9200:9200,9600:9600]
+    ports: [9200]
 
   kibana:
     image: amazon/opendistro-for-elasticsearch-kibana:1.4.0
     container_name: kibana
     ports: [5601:5601]
-    expose: ["5601"]
     environment: [ELASTICSEARCH_URL=https://elasticsearch:9200,ELASTICSEARCH_HOSTS=https://elasticsearch:9200]
     depends_on: [elasticsearch]
 
