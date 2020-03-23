@@ -18,13 +18,12 @@ services:
     image: haugene/transmission-openvpn:latest
     ports: [9091:9091,8888]
     sysctls: [net.ipv6.conf.all.disable_ipv6=0]
-    volumes: [/etc/localtime:/etc/localtime:ro,../data/transmission/data/:/data]
+    volumes: [../data/transmission/data/:/data]
 
   proxy:
     container_name: proxy
     image: haugene/transmission-openvpn-proxy:latest
     ports: [8080:8080]
-    volumes: [/etc/localtime:/etc/localtime:ro]
     depends_on: [transmission]
 
   rss:
@@ -48,14 +47,14 @@ services:
     container_name: jackett
     image: linuxserver/jackett:latest
     ports: [9117:9117]
-    volumes: [../data/jackett/config:/config,../data/jackett/downloads:/downloads]
+    volumes: [../data/jackett/config:/config]
     depends_on: [proxy]
 
   plex:
     container_name: plex
     image: plexinc/pms-docker:latest
     ports: [32400:32400]
-    volumes: [../data/plex/config:/config,../data/plex/transcode:/transcode,../data/plex/data:/data,~/mnt/videos:/videos]
+    volumes: [../data/plex/config:/config,~/mnt/videos:/videos]
 
   tautulli:
     container_name: tautulli
