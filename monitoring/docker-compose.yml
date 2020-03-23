@@ -22,14 +22,13 @@ services:
     environment: ["GF_INSTALL_PLUGINS=grafana-clock-panel,briangann-gauge-panel,natel-plotly-panel,grafana-simple-json-datasource,grafana-worldmap-panel,grafana-piechart-panel"]
     user: "0"
     depends_on: [influxdb]
-    volumes: [../data/grafana/data:/var/lib/grafana,./datasources:/etc/grafana/provisioning/datasources/,./dashboards:/etc/grafana/provisioning/dashboards/]
+    volumes: [./datasources:/etc/grafana/provisioning/datasources/,./dashboards:/etc/grafana/provisioning/dashboards/]
 
   chronograf:
     image: chronograf:latest
     container_name: chronograf
     ports: [8888:8888]
     environment: ["INFLUXDB_URL=http://influxdb:8086","KAPACITOR_URL=http://kapacitor:9092"]
-    volumes: [../data/chronograf:/var/lib/chronograf]
     depends_on: [influxdb]
 
   kapacitor:
@@ -37,7 +36,6 @@ services:
     container_name: kapacitor
     ports: [9092:9092]
     environment: ["KAPACITOR_HOSTNAME=kapacitor","KAPACITOR_LOGGING_LEVEL=INFO","KAPACITOR_REPORTING_ENABLED=false","KAPACITOR_INFLUXDB_0_URLS_0=http://influxdb:8086"]
-    volumes: [../data/kapacitor:/var/lib/kapacitor]
     depends_on: [influxdb]
 
   netdata:
