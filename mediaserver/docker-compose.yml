@@ -58,7 +58,7 @@ services:
 
   tautulli:
     container_name: tautulli
-    image: linuxserver/tautulli:latest
+    image: tautulli/tautulli
     ports: [8181:8181]
     volumes: [../data/tautulli/config:/config,../data/tautulli/plex_logs:/plex_logs:ro]
 
@@ -70,8 +70,8 @@ services:
 
   organizr:
     container_name: organizr
-    image: linuxserver/organizr:latest
-    ports: [20009:80]
+    image: organizrtools/organizr-v2
+    ports: [80:80]
     volumes: [../data/organizr/config:/config]
 
   mylar:
@@ -87,7 +87,7 @@ services:
     volumes: [../data/headphones/config:/config,../data/headphones/music:/music/,../data/headphones/downloads:/downloads]
 
   jellyfin:
-    image: linuxserver/jellyfin
+    image: jellyfin/jellyfin
     container_name: jellyfin
     volumes: [../data/jellyfin/library:/config,~/mnt/videos/tv:/data/tvshows,~/mnt/videos/movies:/data/movies]
     ports: [8096:8096]
