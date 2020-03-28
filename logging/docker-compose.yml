@@ -6,6 +6,7 @@ services:
     container_name: filebeat
     image: docker.elastic.co/beats/filebeat-oss:7.4.0
     depends_on: [logstash]
+    volumes: [./filebeat.yml:/usr/share/filebeat/filebeat.yml]
 
   cerebro:
     container_name: cerebro
