@@ -27,7 +27,7 @@ services:
     image: docker.elastic.co/logstash/logstash-oss:7.1.1
     ports: ["5044:5044"]
     depends_on: [elasticsearch]
-    volumes:  [./logstash.conf:/usr/share/logstash/config/logstash.conf:ro]
+    volumes:  [./logstash/pipeline:/usr/share/logstash/pipeline]
 
   elasticsearch:
     image: amazon/opendistro-for-elasticsearch:1.4.0
