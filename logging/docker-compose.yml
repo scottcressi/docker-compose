@@ -33,7 +33,7 @@ services:
   elasticsearch:
     image: amazon/opendistro-for-elasticsearch:1.4.0
     container_name: elasticsearch
-    environment: [cluster.name=elasticsearch,node.name=elasticsearch,discovery.seed_hosts=elasticsearch,discovery.type=single-node]
+    environment: [discovery.type=single-node]
     volumes: [elasticsearch:/usr/share/elasticsearch/data]
     ports: [9200]
 
