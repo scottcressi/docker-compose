@@ -19,9 +19,8 @@ services:
     container_name: curator
     image: untergeek/curator:5.8.1
     depends_on: [elasticsearch]
-    #volumes:  ["./action_file.yml", "/usr/share/curator/config/action_file.yml"]
-    #environment:
-    #    ELASTICSEARCH_HOST: http://elasticsearch:9200
+    volumes:  [./action_file.yml:/.curator/curator.yml]
+    command: /.curator/curator.yml
 
   logstash:
     container_name: logstash
