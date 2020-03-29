@@ -35,13 +35,15 @@ services:
     container_name: sonarr
     image: linuxserver/sonarr:latest
     ports: [8989:8989]
-    volumes: [../data/sonarr/config:/config,../data/sonarr/tvseries:/tv,../data/sonarr/downloads:/downloads]
+    volumes: [../data/sonarr/config:/config,~/mnt/videos/tv:/tv,~/mnt/drop/completed:/downloads]
+    depends_on: [jackett]
 
   radarr:
     container_name: radarr
     image: linuxserver/radarr:latest
     ports: [7878:7878]
-    volumes: [../data/radarr/config:/config,../data/radarr/movies:/movies,../data/radarr/downloads:/downloads]
+    volumes: [../data/radarr/config:/config,~/mnt/videos/movies:/movies,~/mnt/drop/completed:/downloads]
+    depends_on: [jackett]
 
   jackett:
     container_name: jackett
