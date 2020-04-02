@@ -5,11 +5,11 @@ services:
   whiteboard:
     image: rofl256/whiteboard
     container_name: whiteboard
-    ports: [11111:8080]
+    ports: [40001:8080]
 
   netbootxyz:
     image: linuxserver/netbootxyz
     container_name: netbootxyz
     environment: [PUID=1000,PGID=1000,MENU_VERSION=1.9.9]
     volumes: [../data/netbootxyz/config:/config,../data/netbootxyz/assets:/assets]
-    ports: [3000:3000,69:69/udp,8080:80]
+    ports: [40002:3000,69:69/udp,40003:80]
