@@ -14,8 +14,8 @@ services:
     volumes: [../data/netbootxyz/config:/config,../data/netbootxyz/assets:/assets]
     ports: [40002:3000,69:69/udp,40003:80]
 
-  heimdall:
-    image: linuxserver/heimdall
-    container_name: heimdall
-    volumes: [../data/heimdall/appdata/config:/config]
-    ports: [80:80,443:443]
+  dashmachine:
+    image: rmountjoy/dashmachine
+    container_name: dashmachine
+    volumes: [./config.ini:/dashmachine/dashmachine/user_data/config.ini]
+    ports: [5000:5000]
