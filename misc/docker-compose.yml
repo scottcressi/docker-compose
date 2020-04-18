@@ -19,3 +19,10 @@ services:
     container_name: dashmachine
     volumes: [./config.ini:/dashmachine/dashmachine/user_data/config.ini]
     ports: [5000:5000]
+
+  shinobi:
+    image: shinobisystems/shinobi:latest-ubuntu
+    container_name: shinobi
+    environment: [APP_BRANCH=dev]
+    ports: [8080:8080/tcp]
+    volumes: [/dev/shm/shinobiStreams:/dev/shm/streams,../data/shinobi/shinobiConfig:/config,../data/shinobi/shinobiCustomAutoLoad:/customAutoLoad,../data/shinobi/shinobiDatabase:/var/lib/mysql,../data/shinobi/shinobiVideos:/opt/shinobi/videos]
