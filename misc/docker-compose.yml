@@ -26,3 +26,8 @@ services:
     environment: [APP_BRANCH=dev]
     ports: [8080:8080/tcp]
     volumes: [/dev/shm/shinobiStreams:/dev/shm/streams,../data/shinobi/shinobiConfig:/config,../data/shinobi/shinobiCustomAutoLoad:/customAutoLoad,../data/shinobi/shinobiDatabase:/var/lib/mysql,../data/shinobi/shinobiVideos:/opt/shinobi/videos]
+
+  ouroboros:
+    image: pyouroboros/ouroboros
+    container_name: ouroboros
+    volumes: [/var/run/docker.sock:/var/run/docker.sock]
