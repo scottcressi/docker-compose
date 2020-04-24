@@ -45,3 +45,10 @@ services:
     volumes: [/proc:/host/proc:ro,/sys:/host/sys:ro,/var/run/docker.sock:/var/run/docker.sock:ro]
     cap_add: [SYS_PTRACE]
     security_opt: [apparmor=unconfined]
+
+  hddtemp:
+    container_name: hddtemp
+    image: emilgil/hddtemp:latest
+    privileged: true
+    ports: [7634:7634]
+    environment: [DRIVES=sd*]
