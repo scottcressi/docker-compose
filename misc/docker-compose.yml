@@ -11,7 +11,7 @@ services:
     image: linuxserver/netbootxyz
     container_name: netbootxyz
     environment: [PUID=1000,PGID=1000,MENU_VERSION=1.9.9]
-    volumes: [../data/netbootxyz/config/menus:/config/menus]
+    volumes: [../data/netbootxyz/config/menus/local:/config/menus/local]
     ports: [40002:3000,69:69/udp,40003:80]
 
   dashmachine:
