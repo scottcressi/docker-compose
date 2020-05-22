@@ -30,7 +30,3 @@ services:
     image: phlak/mumble
     container_name: mumble
     ports: [64738:64738,64738:64738/udp]
-    volumes: [mumble-data:/etc/mumble]
-
-volumes:
-    mumble-data:
