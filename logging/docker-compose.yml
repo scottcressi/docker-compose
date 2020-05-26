@@ -30,14 +30,14 @@ services:
     volumes:  [./logstash/pipeline:/usr/share/logstash/pipeline]
 
   elasticsearch:
-    image: amazon/opendistro-for-elasticsearch:1.7.0
+    image: amazon/opendistro-for-elasticsearch
     container_name: elasticsearch
     environment: [discovery.type=single-node]
     volumes: [elasticsearch:/usr/share/elasticsearch/data]
     ports: [9200]
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana:1.7.0
+    image: amazon/opendistro-for-elasticsearch-kibana
     container_name: kibana
     ports: [5601:5601]
     environment: [ELASTICSEARCH_URL=https://elasticsearch:9200,ELASTICSEARCH_HOSTS=https://elasticsearch:9200]
