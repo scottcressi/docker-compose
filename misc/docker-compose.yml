@@ -10,7 +10,7 @@ services:
   netbootxyz:
     image: linuxserver/netbootxyz
     container_name: netbootxyz
-    volumes: [/var/tmp/data/netbootxyz/config/menus/local:/config/menus/local]
+    volumes: [../../../../data/netbootxyz/config/menus/local:/config/menus/local]
     ports: [40002:3000,69:69/udp,40003:80]
 
   dashmachine:
@@ -24,7 +24,7 @@ services:
     container_name: shinobi
     environment: [APP_BRANCH=dev]
     ports: [8080:8080/tcp]
-    volumes: [/dev/shm/shinobiStreams:/dev/shm/streams,/var/tmp/data/shinobi/shinobiConfig:/config,/var/tmp/data/shinobi/shinobiCustomAutoLoad:/customAutoLoad,/var/tmp/data/shinobi/shinobiDatabase:/var/lib/mysql,/var/tmp/data/shinobi/shinobiVideos:/opt/shinobi/videos]
+    volumes: [/dev/shm/shinobiStreams:/dev/shm/streams,../../../../data/shinobi/shinobiConfig:/config,../../../../data/shinobi/shinobiCustomAutoLoad:/customAutoLoad,../../../../data/shinobi/shinobiDatabase:/var/lib/mysql,../../../../data/shinobi/shinobiVideos:/opt/shinobi/videos]
 
   mumble:
     image: phlak/mumble
