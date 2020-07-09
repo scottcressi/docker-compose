@@ -7,7 +7,7 @@ services:
     container_name: influxdb
     ports: [8086:8086,8083,8090]
     environment: ["INFLUXDB_DATA_ENGINE=tsm1","INFLUXDB_REPORTING_DISABLED=false"]
-    volumes: [../../../../data/influxdb/data:/var/lib/influxdb]
+    volumes: [/var/tmp/data/influxdb/data:/var/lib/influxdb]
 
   telegraf:
     image: telegraf:latest
