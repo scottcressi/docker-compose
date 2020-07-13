@@ -23,10 +23,17 @@ services:
     image: shinobisystems/shinobi:latest-ubuntu
     container_name: shinobi
     environment: [APP_BRANCH=dev]
-    ports: [8080:8080/tcp]
+    ports: [8080:8080]
     volumes: [/dev/shm/shinobiStreams:/dev/shm/streams,../../../../data/shinobi/shinobiConfig:/config,../../../../data/shinobi/shinobiCustomAutoLoad:/customAutoLoad,../../../../data/shinobi/shinobiDatabase:/var/lib/mysql,../../../../data/shinobi/shinobiVideos:/opt/shinobi/videos]
 
   mumble:
     image: phlak/mumble
     container_name: mumble
     ports: [64738:64738,64738:64738/udp]
+
+  openssh-server:
+    image: linuxserver/openssh-server
+    container_name: openssh-server
+    environment: [PASSWORD_ACCESS=true,USER_PASSWORD=debian,USER_NAME=debian]
+    ports: [2222:2222]
+    volumes: [~/mnt:/mnt/]
