@@ -10,7 +10,7 @@ services:
 
   cerebro:
     container_name: cerebro
-    image: lmenezes/cerebro
+    image: lmenezes/cerebro:latest
     ports: ["9000:9000"]
     volumes: [./application.conf:/opt/cerebro/conf/application.conf:ro]
     depends_on: [elasticsearch]
@@ -30,14 +30,14 @@ services:
     volumes:  [./logstash/pipeline:/usr/share/logstash/pipeline]
 
   elasticsearch:
-    image: amazon/opendistro-for-elasticsearch
+    image: amazon/opendistro-for-elasticsearch:latest
     container_name: elasticsearch
     environment: [discovery.type=single-node]
     volumes: [elasticsearch:/usr/share/elasticsearch/data]
     ports: [9200]
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana
+    image: amazon/opendistro-for-elasticsearch-kibana:latest
     container_name: kibana
     ports: [5601:5601]
     environment: [ELASTICSEARCH_URL=https://elasticsearch:9200,ELASTICSEARCH_HOSTS=https://elasticsearch:9200]
