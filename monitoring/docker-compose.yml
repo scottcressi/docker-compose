@@ -39,7 +39,7 @@ services:
     depends_on: [influxdb]
 
   netdata:
-    image: netdata/netdata
+    image: netdata/netdata:latest
     container_name: netdata
     ports: [19999:19999]
     volumes: [/proc:/host/proc:ro,/sys:/host/sys:ro,/var/run/docker.sock:/var/run/docker.sock:ro]
