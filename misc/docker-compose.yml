@@ -60,6 +60,17 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes: [db:/var/lib/mysql]
 
+  bitwarden:
+    image: bitwardenrs/server
+    restart: always
+    volumes:
+      - ../../../../data/bw-data:/data
+    environment:
+      WEBSOCKET_ENABLED: 'true' # Required to use websockets
+      SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
+    ports:
+    - 80:80
+
 volumes:
   wordpress:
   db:
