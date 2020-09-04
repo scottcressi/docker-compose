@@ -61,7 +61,7 @@ services:
     volumes: [db:/var/lib/mysql]
 
   bitwarden:
-    image: bitwardenrs/server
+    image: bitwardenrs/server:latest
     restart: always
     volumes:
       - ../../../../data/bw-data:/data
