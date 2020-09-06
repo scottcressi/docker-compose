@@ -51,7 +51,7 @@ services:
     depends_on: [db]
 
   db:
-    image: mysql:latest
+    image: mariadb:latest
     restart: always
     environment:
       MYSQL_DATABASE: exampledb
