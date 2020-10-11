@@ -6,41 +6,53 @@ services:
     container_name: filebeat
     image: docker.elastic.co/beats/filebeat-oss:7.9.2
     depends_on: [logstash]
-    volumes: [./filebeat.yml:/usr/share/filebeat/filebeat.yml]
+    volumes:
+    - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
 
   cerebro:
     container_name: cerebro
     image: lmenezes/cerebro:latest
-    ports: ["9000:9000"]
-    volumes: [./application.conf:/opt/cerebro/conf/application.conf:ro]
+    ports:
+    - 9000:9000
+    volumes:
+    - ./application.conf:/opt/cerebro/conf/application.conf:ro
     depends_on: [elasticsearch]
 
   curator:
     container_name: curator
     image: untergeek/curator:5.8.1
     depends_on: [elasticsearch]
-    volumes:  [./action_file.yml:/.curator/curator.yml]
+    volumes:
+    - ./action_file.yml:/.curator/curator.yml
     command: /.curator/curator.yml
 
   logstash:
     container_name: logstash
     image: docker.elastic.co/logstash/logstash-oss:7.9.2
-    ports: ["5044:5044"]
+    ports:
+    - 5044:5044
     depends_on: [elasticsearch]
-    volumes:  [./logstash/pipeline:/usr/share/logstash/pipeline]
+    volumes:
+    - ./logstash/pipeline:/usr/share/logstash/pipeline
 
   elasticsearch:
     image: amazon/opendistro-for-elasticsearch:latest
     container_name: elasticsearch
-    environment: [discovery.type=single-node]
-    volumes: [elasticsearch:/usr/share/elasticsearch/data]
-    ports: [9200]
+    environment:
+    - discovery.type=single-node
+    volumes:
+    - elasticsearch:/usr/share/elasticsearch/data
+    ports:
+    - 9200
 
   kibana:
     image: amazon/opendistro-for-elasticsearch-kibana:latest
     container_name: kibana
-    ports: [5601:5601]
-    environment: [ELASTICSEARCH_URL=https://elasticsearch:9200,ELASTICSEARCH_HOSTS=https://elasticsearch:9200]
+    ports:
+    - 5601:5601
+    environment:
+    - ELASTICSEARCH_URL=https://elasticsearch:9200
+    - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
     depends_on: [elasticsearch]
 
 volumes:
