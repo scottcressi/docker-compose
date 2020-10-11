@@ -28,10 +28,10 @@ services:
     - 8888
     sysctls: [net.ipv6.conf.all.disable_ipv6=0]
     volumes:
-    - ../../../../data/transmission/resume:/data/transmission-home/resume
-    - ../../../../data/transmission/torrents:/data/transmission-home/torrents
-    - ../../../../data/transmission/incomplete:/data/incomplete
-    - ../../../../data/transmission/completed:/data/completed
+    - ~/data/transmission/resume:/data/transmission-home/resume
+    - ~/data/transmission/torrents:/data/transmission-home/torrents
+    - ~/data/transmission/incomplete:/data/incomplete
+    - ~/data/transmission/completed:/data/completed
 
   proxy:
     container_name: proxy
@@ -52,7 +52,7 @@ services:
     ports:
     - 8989:8989
     volumes:
-    - ../../../../data/sonarr/config:/config
+    - ~/data/sonarr/config:/config
     - ~/mnt/videos/tv:/tv
     - ~/mnt/drop/completed:/downloads
     depends_on: [jackett]
@@ -63,7 +63,7 @@ services:
     ports:
     - 7878:7878
     volumes:
-    - ../../../../data/radarr/config:/config
+    - ~/data/radarr/config:/config
     - ~/mnt/videos/movies:/movies
     - ~/mnt/drop/completed:/downloads
     depends_on: [jackett]
@@ -74,7 +74,7 @@ services:
     ports:
     - 9117:9117
     volumes:
-    - ../../../../data/jackett:/config/Jackett/Indexers
+    - ~/data/jackett:/config/Jackett/Indexers
     depends_on: [proxy]
 
   plex:
@@ -83,7 +83,7 @@ services:
     ports:
     - 32400:32400
     volumes:
-    - ../../../../data/plex/config:/config
+    - ~/data/plex/config:/config
     - ~/mnt/videos:/videos
 
   tautulli:
@@ -92,8 +92,8 @@ services:
     ports:
     - 8181:8181
     volumes:
-    - ../../../../data/tautulli/config:/config
-    - ../../../../data/tautulli/plex_logs:/plex_logs:ro
+    - ~/data/tautulli/config:/config
+    - ~/data/tautulli/plex_logs:/plex_logs:ro
 
   lidarr:
     container_name: lidarr
@@ -101,9 +101,9 @@ services:
     ports:
     - 8686:8686
     volumes:
-    - ../../../../data/lidarr/appdata/config:/config
-    - ../../../../data/lidarr/music:/music
-    - ../../../../data/lidarr/downloads:/downloads
+    - ~/data/lidarr/appdata/config:/config
+    - ~/data/lidarr/music:/music
+    - ~/data/lidarr/downloads:/downloads
 
   organizr:
     container_name: organizr
@@ -111,16 +111,16 @@ services:
     ports:
     - 80:80
     volumes:
-    - ../../../../data/organizr/config:/config
+    - ~/data/organizr/config:/config
 
   mylar:
     container_name: mylar
     image: linuxserver/mylar:latest
     ports: [8090:8090]
     volumes:
-    - ../../../../data/mylar/config:/config
-    - ../../../../data/mylar/comics:/comics/
-    - ../../../../data/mylar/downloads:/downloads
+    - ~/data/mylar/config:/config
+    - ~/data/mylar/comics:/comics/
+    - ~/data/mylar/downloads:/downloads
 
   headphones:
     container_name: headphones
@@ -128,15 +128,15 @@ services:
     ports:
     - 8182:8181
     volumes:
-    - ../../../../data/headphones/config:/config
-    - ../../../../data/headphones/music:/music/
-    - ../../../../data/headphones/downloads:/downloads
+    - ~/data/headphones/config:/config
+    - ~/data/headphones/music:/music/
+    - ~/data/headphones/downloads:/downloads
 
   jellyfin:
     image: jellyfin/jellyfin:latest
     container_name: jellyfin
     volumes:
-    - ../../../../data/jellyfin/library:/config
+    - ~/data/jellyfin/library:/config
     - ~/mnt/videos/tv:/data/tvshows
     - ~/mnt/videos/movies:/data/movies
     ports:

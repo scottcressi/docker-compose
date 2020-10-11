@@ -12,7 +12,7 @@ services:
     image: linuxserver/netbootxyz:latest
     container_name: netbootxyz
     volumes:
-    - ../../../../data/netbootxyz/config/menus/local:/config/menus/local
+    - ~/data/netbootxyz/config/menus/local:/config/menus/local
     ports:
     - 40002:3000
     - 69:69/udp
@@ -62,7 +62,7 @@ services:
       WORDPRESS_DB_PASSWORD: examplepass
       WORDPRESS_DB_NAME: exampledb
     volumes:
-    - ../../../../data/wordpress:/var/www/html
+    - ~/data/wordpress:/var/www/html
     depends_on: [db]
 
   db:
@@ -73,12 +73,12 @@ services:
       MYSQL_PASSWORD: examplepass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
-    - ../../../../data/db:/var/lib/mysql
+    - ~/data/db:/var/lib/mysql
 
   bitwarden:
     image: bitwardenrs/server:latest
     volumes:
-    - ../../../../data/bw-data:/data
+    - ~/data/bw-data:/data
     environment:
       WEBSOCKET_ENABLED: 'true' # Required to use websockets
       SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
