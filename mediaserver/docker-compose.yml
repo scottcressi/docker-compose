@@ -117,7 +117,10 @@ services:
     container_name: mylar
     image: linuxserver/mylar:latest
     ports: [8090:8090]
-    volumes: [../../../../data/mylar/config:/config,../../../../data/mylar/comics:/comics/,../../../../data/mylar/downloads:/downloads]
+    volumes:
+    - ../../../../data/mylar/config:/config
+    - ../../../../data/mylar/comics:/comics/
+    - ../../../../data/mylar/downloads:/downloads
 
   headphones:
     container_name: headphones
