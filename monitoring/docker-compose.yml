@@ -10,7 +10,6 @@ services:
     - 8083
     - 8090
     environment:
-    - INFLUXDB_DATA_ENGINE=tsm1
     - INFLUXDB_REPORTING_DISABLED=false
     volumes:
     - ~/data/influxdb/data:/var/lib/influxdb
