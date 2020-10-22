@@ -40,9 +40,9 @@ services:
     - 64738:64738
     - 64738:64738/udp
 
-  openssh-server:
+  ssh:
     image: linuxserver/openssh-server:latest
-    container_name: openssh-server
+    container_name: ssh
     environment:
     - PASSWORD_ACCESS=true
     - USER_PASSWORD=debian
@@ -50,7 +50,8 @@ services:
     ports:
     - 2222:2222
     volumes:
-    - ~/mnt:/mnt/
+    - ~/mnt:/mnt/data
+    - ~/foo:/mnt/foo
 
   wordpress:
     image: wordpress:latest
