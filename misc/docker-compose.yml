@@ -85,3 +85,11 @@ services:
       SIGNUPS_ALLOWED: 'true'   # set to false to disable signups
     ports:
     - 80:80
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_PASSWORD: admin
+      PGADMIN_DEFAULT_EMAIL: admin@admin.com
+    ports:
+    - 1234:80
