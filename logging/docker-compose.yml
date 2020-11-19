@@ -43,7 +43,7 @@ services:
     volumes:
     - elasticsearch:/usr/share/elasticsearch/data
     ports:
-    - 9200
+    - 9200:9200
 
   kibana:
     image: amazon/opendistro-for-elasticsearch-kibana:latest
