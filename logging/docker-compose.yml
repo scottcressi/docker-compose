@@ -18,14 +18,6 @@ services:
     - ./application.conf:/opt/cerebro/conf/application.conf:ro
     depends_on: [elasticsearch]
 
-  curator:
-    container_name: curator
-    image: untergeek/curator:5.8.1
-    depends_on: [elasticsearch]
-    volumes:
-    - ./action_file.yml:/.curator/curator.yml
-    command: /.curator/curator.yml
-
   logstash:
     container_name: logstash
     image: docker.elastic.co/logstash/logstash-oss:7.9.3
