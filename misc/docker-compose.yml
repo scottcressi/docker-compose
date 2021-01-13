@@ -93,3 +93,9 @@ services:
       PGADMIN_DEFAULT_EMAIL: admin@admin.com
     ports:
     - 1234:80
+
+  openvas:
+    image: mikesplain/openvas
+    container_name: openvas
+    ports:
+      - 443:443
