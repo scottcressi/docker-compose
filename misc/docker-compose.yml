@@ -99,3 +99,9 @@ services:
     container_name: openvas
     ports:
       - 443:443
+
+  searx:
+    image: searx/searx
+    container_name: searx
+    ports:
+        - 8080:8080
