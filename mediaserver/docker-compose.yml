@@ -2,7 +2,7 @@
 
 # copy the .env.example to .env and modify as needed
 
-version: "3.7"
+version: "3.8"
 
 services:
 
