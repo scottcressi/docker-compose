@@ -9,8 +9,6 @@ services:
     - 8086:8086
     environment:
     - INFLUXDB_REPORTING_DISABLED=false
-    volumes:
-    - ~/data/influxdb/data:/var/lib/influxdb
 
   telegraf:
     image: telegraf:latest
