@@ -67,12 +67,12 @@ services:
 
   hddtemp:
     container_name: hddtemp
-    image: emilgil/hddtemp:latest
+    image: drewster727/hddtemp-docker
     privileged: true
     ports:
     - 7634:7634
     environment:
-    - DRIVES=sd*
+    - HDDTEMP_ARGS="-q -d -F /dev/sd*" \
 
   prometheus:
     image: prom/prometheus:latest
