@@ -95,13 +95,13 @@ services:
     - 1234:80
 
   openvas:
-    image: mikesplain/openvas
+    image: mikesplain/openvas:latest
     container_name: openvas
     ports:
       - 443:443
 
   searx:
-    image: searx/searx
+    image: searx/searx:latest
     container_name: searx
     ports:
         - 8080:8080

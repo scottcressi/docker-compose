@@ -67,7 +67,7 @@ services:
 
   hddtemp:
     container_name: hddtemp
-    image: drewster727/hddtemp-docker
+    image: drewster727/hddtemp-docker:latest
     privileged: true
     ports:
     - 7634:7634
@@ -85,7 +85,7 @@ services:
     - ./prometheus.yml:/etc/prometheus/prometheus.yml:ro
 
   node-exporter:
-    image: prom/node-exporter
+    image: prom/node-exporter:latest
     container_name: node-exporter
     ports:
       - '9100:9100'
