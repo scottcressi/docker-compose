@@ -10,13 +10,13 @@ services:
     environment:
     - INFLUXDB_REPORTING_DISABLED=false
 
-  telegraf:
-    image: telegraf:latest
-    container_name: telegraf
-    depends_on: [influxdb]
-    volumes:
-    - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
-    - /var/run/docker.sock:/var/run/docker.sock
+  #telegraf:
+  #  image: telegraf:latest
+  #  container_name: telegraf
+  #  depends_on: [influxdb]
+  #  volumes:
+  #  - ./telegraf.conf:/etc/telegraf/telegraf.conf:ro
+  #  - /var/run/docker.sock:/var/run/docker.sock
 
   grafana:
     image: grafana/grafana:latest
