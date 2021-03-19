@@ -2,7 +2,7 @@ filebeat.inputs:
 - type: log
   enabled: true
   paths:
-    - /anaconda-post.log
+    - test.log
 
 output.logstash:
-  hosts: ["logstash:5044"]
+  hosts: ["localhost:5044"]
