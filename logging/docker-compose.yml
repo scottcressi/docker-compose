@@ -4,7 +4,7 @@ services:
 
   filebeat:
     container_name: filebeat
-    image: docker.elastic.co/beats/filebeat-oss:7.11.0
+    image: docker.elastic.co/beats/filebeat-oss:7.11.2
     depends_on: [logstash]
     volumes:
     - ./filebeat.yml:/usr/share/filebeat/filebeat.yml
@@ -20,7 +20,7 @@ services:
 
   logstash:
     container_name: logstash
-    image: docker.elastic.co/logstash/logstash-oss:7.11.0
+    image: docker.elastic.co/logstash/logstash-oss:7.11.2
     ports:
     - 5044:5044
     depends_on: [elasticsearch]
