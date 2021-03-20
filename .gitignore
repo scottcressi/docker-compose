@@ -1,3 +1,4 @@
 .env
 telegraf-*
 filebeat-*
+*.pem
