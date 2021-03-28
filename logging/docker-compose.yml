@@ -11,7 +11,7 @@ services:
 
   cerebro:
     container_name: cerebro
-    image: lmenezes/cerebro:latest
+    image: lmenezes/cerebro:0.9.3
     ports:
     - 9000:9000
     volumes:
@@ -28,7 +28,7 @@ services:
     - ./logstash/pipeline:/usr/share/logstash/pipeline
 
   elasticsearch:
-    image: amazon/opendistro-for-elasticsearch:latest
+    image: amazon/opendistro-for-elasticsearch:1.13.0
     container_name: elasticsearch
     environment:
     - discovery.type=single-node
@@ -38,7 +38,7 @@ services:
     - 9200:9200
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana:latest
+    image: amazon/opendistro-for-elasticsearch-kibana:1.13.0
     container_name: kibana
     ports:
     - 5601:5601
