@@ -19,7 +19,7 @@ services:
     - 40003:80
 
   dashmachine:
-    image: rmountjoy/dashmachine:latest
+    image: rmountjoy/dashmachine:v0.5-4
     container_name: dashmachine
     volumes:
     - ./config.ini:/dashmachine/dashmachine/user_data/config.ini

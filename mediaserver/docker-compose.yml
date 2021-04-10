@@ -103,7 +103,7 @@ services:
 
   organizr:
     container_name: organizr
-    image: organizr/organizr:latest
+    image: organizr/organizr:linux-amd64
     ports:
     - 80:80
     volumes:
