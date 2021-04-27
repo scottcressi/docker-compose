@@ -1,3 +1,5 @@
+#!/usr/local/env sh
+
 url=https://dl.influxdata.com/telegraf/releases
 binary=telegraf-1.18.1_linux_amd64.tar.gz
 binaryhash=9983cbb853514f1940d237bb8ebd10d68ee6be051e560af04f19473d1e058fdc
