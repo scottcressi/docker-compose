@@ -13,38 +13,38 @@ services:
     container_name: cerebro
     image: lmenezes/cerebro:0.9.3
     ports:
-    - 9000:9000
+      - 9000:9000
     volumes:
-    - ./application.conf:/opt/cerebro/conf/application.conf:ro
+      - ./application.conf:/opt/cerebro/conf/application.conf:ro
     depends_on: [elasticsearch]
 
   logstash:
     container_name: logstash
     image: docker.elastic.co/logstash/logstash-oss:7.11.2
     ports:
-    - 5044:5044
+      - 5044:5044
     depends_on: [elasticsearch]
     volumes:
-    - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
 
   elasticsearch:
     image: amazon/opendistro-for-elasticsearch:1.13.0
     container_name: elasticsearch
     environment:
-    - discovery.type=single-node
+      - discovery.type=single-node
     volumes:
-    - elasticsearch:/usr/share/elasticsearch/data
+      - elasticsearch:/usr/share/elasticsearch/data
     ports:
-    - 9200:9200
+      - 9200:9200
 
   kibana:
     image: amazon/opendistro-for-elasticsearch-kibana:1.13.0
     container_name: kibana
     ports:
-    - 5601:5601
+      - 5601:5601
     environment:
-    - ELASTICSEARCH_URL=https://elasticsearch:9200
-    - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
+      - ELASTICSEARCH_URL=https://elasticsearch:9200
+      - ELASTICSEARCH_HOSTS=https://elasticsearch:9200
     depends_on: [elasticsearch]
 
 volumes:
