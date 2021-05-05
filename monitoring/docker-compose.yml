@@ -3,7 +3,7 @@ version: "3.8"
 services:
 
   influxdb:
-    image: influxdb:1.8.4
+    image: influxdb:1.8.5
     container_name: influxdb
     ports:
     - 8086:8086
@@ -29,7 +29,7 @@ services:
   #  - /var/run/docker.sock:/var/run/docker.sock
 
   grafana:
-    image: grafana/grafana:7.5.1
+    image: grafana/grafana:7.5.5
     container_name: grafana
     ports:
     - 3000:3000
