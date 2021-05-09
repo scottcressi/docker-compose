@@ -101,7 +101,7 @@ services:
       - 443:443
 
   searx:
-    image: searx/searx:1.0.0
+    image: searx/searx:1.0.0-121-d93ac96c
     container_name: searx
     ports:
         - 8080:8080
