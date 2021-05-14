@@ -66,7 +66,7 @@ services:
 
   jackett:
     container_name: jackett
-    image: linuxserver/jackett:latest
+    image: linuxserver/jackett:version-v0.18.59
     ports:
     - 9117:9117
     volumes:
