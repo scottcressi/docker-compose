@@ -77,7 +77,7 @@ services:
     - ~/data/db:/var/lib/mysql
 
   bitwarden:
-    image: bitwardenrs/server:1.19.0
+    image: vaultwarden/server:1.21.0
     volumes:
     - ~/data/bw-data:/data
     environment:
