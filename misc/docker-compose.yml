@@ -74,7 +74,7 @@ services:
       MYSQL_PASSWORD: examplepass
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
-    - ~/data/db:/var/lib/mysql
+    - ~/data/wordpressdb:/var/lib/mysql
 
   bitwarden:
     image: vaultwarden/server:1.21.0
