@@ -54,7 +54,7 @@ services:
     - ~/foo:/mnt/foo
 
   wordpress:
-    image: wordpress:5.7.0
+    image: wordpress:5.7.2
     ports:
     - 80:80
     environment:
@@ -67,7 +67,7 @@ services:
     depends_on: [wordpress-db]
 
   wordpress-db:
-    image: mariadb:10.5.9
+    image: mariadb:10.6.1
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
