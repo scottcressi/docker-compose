@@ -75,7 +75,7 @@ services:
 
   plex:
     container_name: plex
-    image: plexinc/pms-docker:1.22.1.4228-724c56e62
+    image: plexinc/pms-docker:latest
     ports:
     - 32400:32400
     volumes:
@@ -129,7 +129,7 @@ services:
     - ~/data/headphones/downloads:/downloads
 
   jellyfin:
-    image: jellyfin/jellyfin:10.7.1
+    image: jellyfin/jellyfin:latest
     container_name: jellyfin
     volumes:
     - ~/data/jellyfin/library:/config
