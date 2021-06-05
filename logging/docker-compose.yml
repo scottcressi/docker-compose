@@ -11,7 +11,7 @@ services:
 
   cerebro:
     container_name: cerebro
-    image: lmenezes/cerebro:0.9.3
+    image: lmenezes/cerebro:0.9.4
     ports:
       - 9000:9000
     volumes:
