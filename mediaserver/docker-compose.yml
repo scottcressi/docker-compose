@@ -48,7 +48,7 @@ services:
     - ~/data/sonarr/config:/config
     - ~/mnt/videos/tv:/tv
     - ~/mnt/drop/completed:/downloads
-    depends_on: [jackett]
+    depends_on: [proxy]
 
   radarr:
     container_name: radarr
@@ -59,7 +59,7 @@ services:
     - ~/data/radarr/config:/config
     - ~/mnt/videos/movies:/movies
     - ~/mnt/drop/completed:/downloads
-    depends_on: [jackett]
+    depends_on: [proxy]
 
   jackett:
     container_name: jackett
