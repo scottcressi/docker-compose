@@ -9,7 +9,7 @@ services:
     - 40001:8080
 
   netbootxyz:
-    image: linuxserver/netbootxyz:version-0.6.3
+    image: linuxserver/netbootxyz:version-0.6.4
     container_name: netbootxyz
     volumes:
     - ~/data/netbootxyz/config/menus/local:/config/menus/local
