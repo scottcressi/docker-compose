@@ -67,7 +67,7 @@ services:
     depends_on: [wordpress-db]
 
   wordpress-db:
-    image: mariadb:10.6.1
+    image: mariadb:10.5
     environment:
       MYSQL_DATABASE: exampledb
       MYSQL_USER: exampleuser
