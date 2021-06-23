@@ -41,7 +41,7 @@ services:
 
   sonarr:
     container_name: sonarr
-    image: linuxserver/sonarr:version-3.0.6.1196
+    image: linuxserver/sonarr:latest
     ports:
     - 8989:8989
     volumes:
@@ -52,7 +52,7 @@ services:
 
   radarr:
     container_name: radarr
-    image: linuxserver/radarr:nightly-version-3.1.0.4799
+    image: linuxserver/radarr:latest
     ports:
     - 7878:7878
     volumes:
@@ -81,7 +81,7 @@ services:
 
   tautulli:
     container_name: tautulli
-    image: tautulli/tautulli:v2.6.10
+    image: tautulli/tautulli:latest
     ports:
     - 8181:8181
     volumes:
@@ -90,7 +90,7 @@ services:
 
   lidarr:
     container_name: lidarr
-    image: linuxserver/lidarr:version-0.7.2.1878
+    image: linuxserver/lidarr:latest
     ports:
     - 8686:8686
     volumes:
@@ -100,7 +100,7 @@ services:
 
   organizr:
     container_name: organizr
-    image: organizr/organizr:linux-amd64
+    image: organizr/organizr:latest
     ports:
     - 80:80
     volumes:
@@ -108,7 +108,7 @@ services:
 
   mylar:
     container_name: mylar
-    image: linuxserver/mylar:version-94dcfd13
+    image: linuxserver/mylar:latest
     ports: [8090:8090]
     volumes:
     - ~/data/mylar/config:/config
@@ -117,7 +117,7 @@ services:
 
   headphones:
     container_name: headphones
-    image: linuxserver/headphones:version-379fd3d0
+    image: linuxserver/headphones:latest
     ports:
     - 8182:8181
     volumes:

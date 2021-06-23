@@ -20,7 +20,7 @@ services:
 
   logstash:
     container_name: logstash
-    image: docker.elastic.co/logstash/logstash-oss:7.11.2
+    image: docker.elastic.co/logstash/logstash-oss:7.13.2
     ports:
       - 5044:5044
     depends_on: [elasticsearch]
@@ -28,7 +28,7 @@ services:
       - ./logstash/pipeline:/usr/share/logstash/pipeline
 
   elasticsearch:
-    image: amazon/opendistro-for-elasticsearch:1.13.0
+    image: amazon/opendistro-for-elasticsearch:1.13.2
     container_name: elasticsearch
     environment:
       - discovery.type=single-node
@@ -38,7 +38,7 @@ services:
       - 9200:9200
 
   kibana:
-    image: amazon/opendistro-for-elasticsearch-kibana:1.13.0
+    image: amazon/opendistro-for-elasticsearch-kibana:1.13.2
     container_name: kibana
     ports:
       - 5601:5601

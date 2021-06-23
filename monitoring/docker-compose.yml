@@ -11,7 +11,7 @@ services:
     - INFLUXDB_REPORTING_DISABLED=false
 
   graphite:
-    image: graphiteapp/graphite-statsd:1.1.7-11
+    image: graphiteapp/graphite-statsd:1.1.8-1
     container_name: graphite
     ports:
     - 80:80
@@ -21,7 +21,7 @@ services:
     - 8126:8126
 
   telegraf:
-    image: telegraf:1.18.2
+    image: telegraf:1.18
     container_name: telegraf
     depends_on: [influxdb]
     volumes:
@@ -29,7 +29,7 @@ services:
     - /var/run/docker.sock:/var/run/docker.sock
 
   grafana:
-    image: grafana/grafana:7.5.5
+    image: grafana/grafana:8.0.3
     container_name: grafana
     ports:
     - 3000:3000
@@ -42,7 +42,7 @@ services:
     - ./dashboards:/etc/grafana/provisioning/dashboards/
 
   chronograf:
-    image: chronograf:1.8.8
+    image: chronograf:1.8
     container_name: chronograf
     ports:
     - 8888:8888
@@ -52,7 +52,7 @@ services:
     depends_on: [influxdb]
 
   kapacitor:
-    image: kapacitor:1.5.8
+    image: kapacitor:1.5
     container_name: kapacitor
     ports:
     - 9092:9092
@@ -64,7 +64,7 @@ services:
     depends_on: [influxdb]
 
   netdata:
-    image: netdata/netdata:v1.29.3
+    image: netdata/netdata:v1.31
     container_name: netdata
     ports:
     - 19999:19999
@@ -85,7 +85,7 @@ services:
     - HDDTEMP_ARGS="-q -d -F /dev/sd*" \
 
   prometheus:
-    image: prom/prometheus:v2.25.2
+    image: prom/prometheus:v2.28.0
     container_name: prometheus
     ports:
     - 9090:9090
