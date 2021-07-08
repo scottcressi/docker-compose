@@ -9,16 +9,10 @@ services:
   transmission:
     cap_add: [NET_ADMIN]
     container_name: transmission-openvpn
-    devices: [/dev/net/tun]
-    dns:
-    - 8.8.8.8
-    - 8.8.4.4
     environment:
     - OPENVPN_PROVIDER=${VPN_PROVIDER}
     - OPENVPN_USERNAME=${VPN_USERNAME}
     - OPENVPN_PASSWORD=${VPN_PASSWORD}
-    - OPENVPN_OPTS=--inactive 3600 --ping 10 --ping-exit 60
-    - LOCAL_NETWORK=192.168.0.0/24
     image: haugene/transmission-openvpn:3.6
     ports:
     - 9091
